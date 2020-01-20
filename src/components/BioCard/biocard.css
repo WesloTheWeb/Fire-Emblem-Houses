@@ -11,6 +11,10 @@
     background-color: #C4C0A8;
 }
 
+#characterArrangement div img {
+    width: 65%;
+}
+
 .studentInfo {
     color: #1B5F3B;
     font-weight: bold;
