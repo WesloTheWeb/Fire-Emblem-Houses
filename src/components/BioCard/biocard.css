@@ -1,0 +1,14 @@
+#characterArrangement {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    grid-gap: 2em;
+    width: 56%;
+    margin: 4em auto 0 auto;
+}
+
+#characterArrangement div {
+    background-color: #C4C0A8;
+}
+
+ 
