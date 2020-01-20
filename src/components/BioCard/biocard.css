@@ -11,4 +11,20 @@
     background-color: #C4C0A8;
 }
 
- 
+.studentInfo {
+    color: #1B5F3B;
+    font-weight: bold;
+}
+
+.studentCrest {
+    color: darkblue;
+    font-weight: bold;
+}
+
+.dislike {
+    color: darkred
+}
+
+.like {
+    color: green;
+}
