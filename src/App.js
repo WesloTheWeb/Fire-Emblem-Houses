@@ -106,7 +106,7 @@ class App extends Component {
   toggleGoldenDeer = () => {
     console.log('Golden Deer has been clicked!');
     const revealDeer = this.state.showGrid;
-    this.setState({showGrid: !revealDeer})
+    this.setState({ showGrid: !revealDeer })
   }
 
   toggleBlueLions = () => {
@@ -124,15 +124,19 @@ class App extends Component {
     if (this.state.showGrid) {
       showRoster = (
         <div id={classes.characterArrangement}>
-          <BioCard image={this.state.goldenDeer[0].image} name={this.state.goldenDeer[0].name} />
-          <BioCard />
-          <BioCard />
-          <BioCard />
-          <BioCard />
-          <BioCard />
-          <BioCard />
-          <BioCard />
-          <BioCard />
+          {this.state.goldenDeer.map((person, index) => {
+            return <BioCard 
+              key={index}
+              name={person.name}
+              age={person.age}
+              height={person.height}
+              house={person.House}
+              crest={person.Crest}
+              likes={person.Likes}
+              dislikes={person.Dislikes}
+               />
+          })}
+     
         </div>
       );
     }
@@ -146,7 +150,7 @@ class App extends Component {
           blueLions={this.toggleBlueLions}
           blackEagles={this.toggleBlackEagles}
           church={this.toggleChurch}
-           />
+        />
         {showRoster}
       </div>
 
