@@ -13,7 +13,7 @@ const BioCard = (props) => {
             <p><b>House:</b> {props.house}</p>
             <p><b>Crest:</b> {props.crest}</p>
             <p><b>Likes:</b> {props.likes}</p>
-            <p><b>Dislikes:</b> {props.dislike}</p>
+            <p><b>Dislikes:</b> {props.dislikes}</p>
         </div>
     );
 }

@@ -5,7 +5,8 @@ import HouseCards from './components/HouseCards/HouseCards';
 import BioCard from './components/BioCard/BioCard';
 import classes from './components/BioCard/biocard.css';
 
-import claude from './House/GoldenDeerHouse/Claude_thumb.png';
+import {
+  claude, hilda, leonie, lorenz, lysithea, raphael, marianne, ignatz } from './House/index.js';
 
 
 class App extends Component {
@@ -23,7 +24,7 @@ class App extends Component {
           being bound to common sense`},
       {
         id: 'goldenDeer2',
-        image: <img src="" alt="Hilda" />,
+        image: <img src={hilda} alt="Hilda" />,
         name: 'Hilda Valentine Goneril',
         age: 18,
         height: '154cm',
@@ -33,7 +34,7 @@ class App extends Component {
       },
       {
         id: 'goldenDeer3',
-        image: <img src="" alt="Leonie" />,
+        image: <img src={leonie} alt="Leonie" />,
         name: `Leonie Pinelli`,
         age: 20,
         height: '168cm',
@@ -43,7 +44,7 @@ class App extends Component {
       },
       {
         id: 'goldenDeer4',
-        image: <img src="" alt="Lorenz" />,
+        image: <img src={lorenz} alt="Lorenz" />,
         name: 'Lorenz Hellman Gloucester',
         age: 19,
         height: '188cm',
@@ -53,7 +54,7 @@ class App extends Component {
       },
       {
         id: 'goldenDeer5',
-        image: '',
+        image: <img src={lysithea} alt="Lysithea" />,
         name: 'Lysithea von Ordelia',
         age: 15,
         height: '148cm',
@@ -63,7 +64,7 @@ class App extends Component {
       },
       {
         id: 'goldenDeer6',
-        image: ``,
+        image: <img src={raphael} alt="Raphael" />,
         name: 'Raphael Kirsten',
         age: 18,
         height: '190cm',
@@ -73,7 +74,7 @@ class App extends Component {
       },
       {
         id: 'goldenDeer7',
-        image: '',
+        image: <img src={marianne} alt="Marianne" />,
         name: 'Marianne von Edmund',
         age: 18,
         height: '163cm',
@@ -83,7 +84,7 @@ class App extends Component {
       },
       {
         id: 'goldenDeer8',
-        image: '',
+        image: <img src={ignatz} alt="Ignatz" />,
         name: 'Ignatz Victor',
         age: 17,
         height: '164cm',
@@ -127,6 +128,7 @@ class App extends Component {
           {this.state.goldenDeer.map((person, index) => {
             return <BioCard 
               key={index}
+              image={person.image}
               name={person.name}
               age={person.age}
               height={person.height}
