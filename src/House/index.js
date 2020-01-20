@@ -20,3 +20,10 @@ export const ignatz= require(`./GoldenDeerHouse/Ignatz_thumb.png`);
 
 // Blue Lions
 export const dimitri = require(`./Blue_Lions_House/Dimitri_thumb.png`);
+export const dedue = require(`./Blue_Lions_House/Dedue_thumb.png`);
+export const annette = require(`./Blue_Lions_House/Annette_thumb.png`);
+export const ashe = require(`./Blue_Lions_House/Ashe_thumb.png`);
+export const felix = require(`./Blue_Lions_House/Felix_thumb.png`);
+export const mercedes = require(`./Blue_Lions_House/Mercedes_thumb.png`);
+export const ingrid = require(`./Blue_Lions_House/Ingrid_thumb.png`);
+export const sylvain = require(`./Blue_Lions_House/Sylvain_thumb.png`);

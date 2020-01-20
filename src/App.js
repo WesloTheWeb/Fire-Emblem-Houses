@@ -6,11 +6,86 @@ import BioCard from './components/BioCard/BioCard';
 import classes from './components/BioCard/biocard.css';
 
 import {
-  claude, hilda, leonie, lorenz, lysithea, raphael, marianne, ignatz } from './House/index.js';
+  claude, hilda, leonie, lorenz, lysithea, raphael, marianne, ignatz, 
+  edelgard, hubert, ferdinand, petra, caspar, linhardt, bernadetta, dorothea } from './House/index.js';
 
 
 class App extends Component {
   state = {
+    blackEagles: [
+      {
+          image: <img src={edelgard} alt="edelgard"/>, 
+          name: 'Edelgard von Hresvelg',
+          age: 17, 
+          height: '175cm',
+          House: 'Hresvelg', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={hubert} alt="hubert"/>, 
+          name: 'Hubert von Vestra',
+          age: 20, 
+          height: '175cm',
+          House: 'Vestra', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={ferdinand} alt="ferdinand"/>, 
+          name: 'Ferdinand von Aegir',
+          age: 17, 
+          height: '175cm',
+          House: 'Aegir', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={petra} alt="petra"/>, 
+          name: 'Petra Macneary',
+          age: 15, 
+          height: '175cm',
+          House: 'Princess of Brigid', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={caspar} alt="caspar"/>, 
+          name: 'Caspar von Bergliez',
+          age: 16, 
+          height: '175cm',
+          House: 'Bergliez', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={linhardt} alt="linhardt"/>, 
+          name: 'Linhardt von Hevring',
+          age: 16, 
+          height: '175cm',
+          House: 'Hevring', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={bernadetta} alt="bernadetta"/>,
+          name: 'Bernadetta von Varley',
+          age: 17, 
+          height: '175cm',
+          House: 'Varley', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+      {
+          image: <img src={dorothea} alt="dorothea"/>, 
+          name: 'Dorothea Arnault',
+          age: 18, 
+          height: '175cm',
+          House: 'N/A', Crest: 'unknown',
+          Likes: 'Likes', 
+          Dislikes: 'dislikes'
+      },
+  ],
     goldenDeer: [
       {
         id: 'goldenDeer1',
@@ -102,6 +177,8 @@ class App extends Component {
 
   toggleBlackEagles = () => {
     console.log(`Edelgard tho`);
+    const revealEagles = this.state.showGrid;
+    this.setState({ showGrid: !revealEagles })
   }
 
   toggleGoldenDeer = () => {
