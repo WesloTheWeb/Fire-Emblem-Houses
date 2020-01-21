@@ -199,8 +199,7 @@ class App extends Component {
 
     let showRoster = null;
 
-    if (this.state.showGrid) {
-      
+    if (this.state.showGrid) {   
       showRoster = (
         <div id={classes.characterArrangement}>
           {this.state.goldenDeer.map((person) => {
