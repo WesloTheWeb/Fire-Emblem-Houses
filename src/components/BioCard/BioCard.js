@@ -5,7 +5,7 @@ import classes from './biocard.css';
 
 const BioCard = (props) => {
     const {image, name, age, height, house, crest, likes, dislikes} = props;
-    const {studentInfo, BioCard, studentCrest, like, dislike} = classes;
+    const {studentInfo, BioCard, studentCrest, likeColor, dislikeColor} = classes;
     
     return (
         <div className={BioCard}>
@@ -15,8 +15,8 @@ const BioCard = (props) => {
             <p><b>Height:</b> <span className={studentInfo}>{height}</span></p>
             <p><b>House:</b> <span className={studentInfo}>{house}</span></p>
             <p><b>Crest:</b> <span className={studentCrest}>{crest}</span></p>
-            <p><b>Likes:</b> <span className={like}>{likes}</span></p>
-            <p><b>Dislikes:</b> <span className={dislike}>{dislikes}</span></p>
+            <p><b>Likes:</b> <span className={likeColor}>{likes}</span></p>
+            <p><b>Dislikes:</b> <span className={dislikeColor}>{dislikes}</span></p>
         </div>
     );
 }

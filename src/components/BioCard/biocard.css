@@ -25,10 +25,10 @@
     font-weight: bold;
 }
 
-.dislike {
+.dislikeColor {
     color: darkred
 }
 
-.like {
+.likeColor {
     color: green;
 }
