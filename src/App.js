@@ -203,9 +203,8 @@ class App extends Component {
       
       showRoster = (
         <div id={classes.characterArrangement}>
-          {this.state.goldenDeer.map((person, index) => {
+          {this.state.goldenDeer.map((person) => {
             return <BioCard 
-              key={index}
               image={person.image}
               name={person.name}
               age={person.age}
@@ -216,7 +215,6 @@ class App extends Component {
               dislikes={person.Dislikes}
                />
           })}
-     
         </div>
       );
     }
