@@ -212,7 +212,7 @@ class App extends Component {
               crest={person.Crest}
               likes={person.Likes}
               dislikes={person.Dislikes}
-               />
+              />
           })}
         </div>
       );
