@@ -13,7 +13,7 @@ import {
 class App extends Component {
   state = {
     blackEagles: [
-      {
+      {   id: 'blackEagle1',
           image: <img src={edelgard} alt="edelgard"/>, 
           name: 'Edelgard von Hresvelg',
           age: 17, 
@@ -22,7 +22,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle2',
           image: <img src={hubert} alt="hubert"/>, 
           name: 'Hubert von Vestra',
           age: 20, 
@@ -31,7 +31,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle3',
           image: <img src={ferdinand} alt="ferdinand"/>, 
           name: 'Ferdinand von Aegir',
           age: 17, 
@@ -40,7 +40,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle4',
           image: <img src={petra} alt="petra"/>, 
           name: 'Petra Macneary',
           age: 15, 
@@ -49,7 +49,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle5',
           image: <img src={caspar} alt="caspar"/>, 
           name: 'Caspar von Bergliez',
           age: 16, 
@@ -58,7 +58,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle6',
           image: <img src={linhardt} alt="linhardt"/>, 
           name: 'Linhardt von Hevring',
           age: 16, 
@@ -67,7 +67,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle7',
           image: <img src={bernadetta} alt="bernadetta"/>,
           name: 'Bernadetta von Varley',
           age: 17, 
@@ -76,7 +76,7 @@ class App extends Component {
           Likes: 'Likes', 
           Dislikes: 'dislikes'
       },
-      {
+      {   id: 'blackEagle8',
           image: <img src={dorothea} alt="dorothea"/>, 
           name: 'Dorothea Arnault',
           age: 18, 
@@ -176,13 +176,13 @@ class App extends Component {
   }
 
   toggleBlackEagles = () => {
-    console.log(`Edelgard tho`);
+    console.log(`Black eagles clicked`);
     const revealEagles = this.state.showGrid;
     this.setState({ showGrid: !revealEagles })
   }
 
   toggleGoldenDeer = () => {
-    console.log('Golden Deer has been clicked!');
+    console.log('Golden Deer clicked!');
     const revealDeer = this.state.showGrid;
     this.setState({ showGrid: !revealDeer })
   }
@@ -220,7 +220,6 @@ class App extends Component {
       );
     }
 
-
     return (
       <div className="App">
         <Title />
@@ -232,7 +231,6 @@ class App extends Component {
         />
         {showRoster}
       </div>
-
     );
   }
 }
