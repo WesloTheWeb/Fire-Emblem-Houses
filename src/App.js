@@ -186,7 +186,6 @@ class App extends Component {
     const revealDeer = this.state.showGrid;
     this.setState({ showGrid: !revealDeer })
   }
-  
 
   toggleBlueLions = () => {
     console.log(`Blue Lions has been clicked!`);
