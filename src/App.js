@@ -6,86 +6,180 @@ import BioCard from './components/BioCard/BioCard';
 import classes from './components/BioCard/biocard.css';
 
 import {
-  claude, hilda, leonie, lorenz, lysithea, raphael, marianne, ignatz, 
-  edelgard, hubert, ferdinand, petra, caspar, linhardt, bernadetta, dorothea } from './House/index.js';
+  claude, hilda, leonie, lorenz, lysithea, raphael, marianne, ignatz,
+  edelgard, hubert, ferdinand, petra, caspar, linhardt, bernadetta, dorothea,
+  dimitri, dedue, annette, ashe, felix, mercedes, ingrid, sylvain
+} from './House/index.js';
 
 
 class App extends Component {
   state = {
     blackEagles: [
-      {   id: 'blackEagle1',
-          image: <img src={edelgard} alt="edelgard"/>, 
-          name: 'Edelgard von Hresvelg',
-          age: 17, 
-          height: '175cm',
-          House: 'Hresvelg', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle1',
+        image: <img src={edelgard} alt="edelgard" />,
+        name: 'Edelgard von Hresvelg',
+        age: 17,
+        height: '175cm',
+        House: 'Hresvelg', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle2',
-          image: <img src={hubert} alt="hubert"/>, 
-          name: 'Hubert von Vestra',
-          age: 20, 
-          height: '175cm',
-          House: 'Vestra', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle2',
+        image: <img src={hubert} alt="hubert" />,
+        name: 'Hubert von Vestra',
+        age: 20,
+        height: '175cm',
+        House: 'Vestra', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle3',
-          image: <img src={ferdinand} alt="ferdinand"/>, 
-          name: 'Ferdinand von Aegir',
-          age: 17, 
-          height: '175cm',
-          House: 'Aegir', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle3',
+        image: <img src={ferdinand} alt="ferdinand" />,
+        name: 'Ferdinand von Aegir',
+        age: 17,
+        height: '175cm',
+        House: 'Aegir', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle4',
-          image: <img src={petra} alt="petra"/>, 
-          name: 'Petra Macneary',
-          age: 15, 
-          height: '175cm',
-          House: 'Princess of Brigid', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle4',
+        image: <img src={petra} alt="petra" />,
+        name: 'Petra Macneary',
+        age: 15,
+        height: '175cm',
+        House: 'Princess of Brigid', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle5',
-          image: <img src={caspar} alt="caspar"/>, 
-          name: 'Caspar von Bergliez',
-          age: 16, 
-          height: '175cm',
-          House: 'Bergliez', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle5',
+        image: <img src={caspar} alt="caspar" />,
+        name: 'Caspar von Bergliez',
+        age: 16,
+        height: '175cm',
+        House: 'Bergliez', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle6',
-          image: <img src={linhardt} alt="linhardt"/>, 
-          name: 'Linhardt von Hevring',
-          age: 16, 
-          height: '175cm',
-          House: 'Hevring', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle6',
+        image: <img src={linhardt} alt="linhardt" />,
+        name: 'Linhardt von Hevring',
+        age: 16,
+        height: '175cm',
+        House: 'Hevring', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle7',
-          image: <img src={bernadetta} alt="bernadetta"/>,
-          name: 'Bernadetta von Varley',
-          age: 17, 
-          height: '175cm',
-          House: 'Varley', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle7',
+        image: <img src={bernadetta} alt="bernadetta" />,
+        name: 'Bernadetta von Varley',
+        age: 17,
+        height: '175cm',
+        House: 'Varley', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-      {   id: 'blackEagle8',
-          image: <img src={dorothea} alt="dorothea"/>, 
-          name: 'Dorothea Arnault',
-          age: 18, 
-          height: '175cm',
-          House: 'N/A', Crest: 'unknown',
-          Likes: 'Likes', 
-          Dislikes: 'dislikes'
+      {
+        id: 'blackEagle8',
+        image: <img src={dorothea} alt="dorothea" />,
+        name: 'Dorothea Arnault',
+        age: 18,
+        height: '175cm',
+        House: 'N/A', Crest: 'unknown',
+        Likes: 'Likes',
+        Dislikes: 'dislikes'
       },
-  ],
+    ],
+
+    blueLions: [
+      {
+        id: 'blueLions1',
+        image: <img src={dimitri} alt="Dimitri" />,
+        name: 'Dimitri Alexandre Blaiddyd',
+        age: 17,
+        height: '180cm',
+        House: 'Blaiddyd', Crest: 'Minor Crest of Blaiddyd',
+        Likes: 'Combat, high-quality weapons, strength training, going for long rides, physically laborious work',
+        Dislikes: 'Delicate work, frgile objects, scorching heat, selfish people'
+      },
+      {
+        id: 'blueLions2',
+        image: <img src={dedue} alt="Dedue" />,
+        name: 'Dedue Molinaro',
+        age: 18,
+        height: '204cm',
+        House: 'Commoner', Crest: 'N/A',
+        Likes: 'Flowers, gardening, needlework, arts and crafts',
+        Dislikes: 'Anyone who attempts to harm Dimitri'
+      },
+      {
+        id: 'blueLions3',
+        image: <img src={annette} alt="Annette" />,
+        name: 'Annette Fantine Dominic',
+        age: 16,
+        height: '151cm',
+        House: 'Dominic', Crest: 'Minor Crest Dominic',
+        Likes: 'Cleaning, doing laundry, morning walks',
+        Dislikes: 'Indolences, dark places, hard-to-reach places that needs a good dusting'
+      },
+      {
+        id: 'blueLions4',
+        image: <img src={ashe} alt="Ashe" />,
+        name: 'Ashe Ubert',
+        age: 16,
+        height: '164cm',
+        House: 'Commoner', Crest: 'N/A',
+        Likes: 'Sweets, tales of chivalry, travel journals, looking after children, violets',
+        Dislikes: 'Ghosts, enclosed spaces, violence, deception'
+      },
+      {
+        id: 'blueLions5',
+        image: <img src={felix} alt="Felix" />,
+        name: 'Felix Hugo Fraldarius',
+        age: 17,
+        height: '174cm',
+        House: 'Fraldarius', Crest: 'Crest of Fraldarius',
+        Likes: 'Fighting, high-quality weapons, spicy foods, hunting, meat',
+        Dislikes: 'Levity, sweets, chivalry, his father'
+      },
+      {
+        id: 'blueLions6',
+        image: <img src={mercedes} alt="Mercedes" />,
+        name: 'Mercedes von Martritz',
+        age: 22,
+        height: '169cm',
+        House: 'Commoner', Crest: 'Lamine',
+        Likes: 'Sweets, needlework, ghost stories, adorable things, painting, reading, fragrant flowers',
+        Dislikes: 'Spicy foods, exercise '
+      },
+      {
+        id: 'blueLions7',
+        image: <img src={ingrid} alt="Ingrid" />,
+        name: 'Ingrid Brandl Galatea',
+        age: 17,
+        height: '165cm',
+        House: 'Galatea', Crest: 'Minor Crest of Daphnel',
+        Likes: 'Food samples, meaty meals, looking after horses, tales of chivalry, virtuous knights',
+        Dislikes: 'Extravagance, hunger, the people of Duscur'
+      },
+      {
+        id: 'blueLions8',
+        image: <img src={sylvain} alt="Sylvain" />,
+        name: 'Sylvain Jose Gautier',
+        age: 19,
+        height: '186cm',
+        House: 'Gautier', Crest: 'Minor Crest of Gautier',
+        Likes: 'Women, lively places, board games',
+        Dislikes: 'Unclean spaces, jealousy, hot days'
+      }
+    ],
+
     goldenDeer: [
       {
         id: 'goldenDeer1',
@@ -199,11 +293,11 @@ class App extends Component {
 
     let showRoster = null;
 
-    if (this.state.showGrid) {   
+    if (this.state.showGrid) {
       showRoster = (
         <div id={classes.characterArrangement}>
-          {this.state.goldenDeer.map((person) => {
-            return <BioCard 
+          {this.state.blueLions.map((person) => {
+            return <BioCard
               image={person.image}
               name={person.name}
               age={person.age}
@@ -212,7 +306,7 @@ class App extends Component {
               crest={person.Crest}
               likes={person.Likes}
               dislikes={person.Dislikes}
-              />
+            />
           })}
         </div>
       );
