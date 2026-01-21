@@ -3,311 +3,212 @@ import './App.css';
 import Title from './components/Title/Title';
 import HouseCards from './components/HouseCards/HouseCards';
 import BioCard from './components/BioCard/BioCard';
-import classes from './components/BioCard/biocard.css';
+import classes from './components/BioCard/biocard.module.css';
 
+// Import all character images from centralized assets
+import * as images from './assets/images';
+
+// Import clean character data
 import {
-  claude, hilda, leonie, lorenz, lysithea, raphael, marianne, ignatz,
-  edelgard, hubert, ferdinand, petra, caspar, linhardt, bernadetta, dorothea,
-  dimitri, dedue, annette, ashe, felix, mercedes, ingrid, sylvain
-} from './House/index.js';
+  blackEaglesData,
+  blueLionsData,
+  goldenDeerData,
+  churchOfSeirosData
+} from './data/characters';
 
 
+/**
+ * App Component - Main class component for Fire Emblem Three Houses Cast Cards
+ * 
+ * LIFECYCLE METHODS IN CLASS COMPONENTS:
+ * 
+ * MOUNTING PHASE (component is being created and inserted into DOM):
+ *   1. constructor() - Initialize state, bind methods
+ *   2. static getDerivedStateFromProps() - Rarely used, sync state with props
+ *   3. render() - Required, returns JSX
+ *   4. componentDidMount() - Called after component mounts; ideal for API calls, subscriptions
+ * 
+ * UPDATING PHASE (component is re-rendered due to state/props changes):
+ *   1. static getDerivedStateFromProps()
+ *   2. shouldComponentUpdate() - Performance optimization, return false to skip render
+ *   3. render()
+ *   4. getSnapshotBeforeUpdate() - Capture info from DOM before update
+ *   5. componentDidUpdate() - Called after update; good for DOM operations, network requests
+ * 
+ * UNMOUNTING PHASE (component is being removed from DOM):
+ *   1. componentWillUnmount() - Cleanup: cancel subscriptions, timers, network requests
+ * 
+ * ERROR HANDLING:
+ *   1. static getDerivedStateFromError() - Update state when error is thrown
+ *   2. componentDidCatch() - Log errors, show fallback UI
+ */
 class App extends Component {
-  state = {
-    blackEagles: [
-      {
-        id: 'blackEagle1',
-        image: <img src={edelgard} alt="edelgard" />,
-        name: 'Edelgard von Hresvelg',
-        age: 17,
-        height: '175cm',
-        House: 'Hresvelg', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle2',
-        image: <img src={hubert} alt="hubert" />,
-        name: 'Hubert von Vestra',
-        age: 20,
-        height: '175cm',
-        House: 'Vestra', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle3',
-        image: <img src={ferdinand} alt="ferdinand" />,
-        name: 'Ferdinand von Aegir',
-        age: 17,
-        height: '175cm',
-        House: 'Aegir', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle4',
-        image: <img src={petra} alt="petra" />,
-        name: 'Petra Macneary',
-        age: 15,
-        height: '175cm',
-        House: 'Princess of Brigid', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle5',
-        image: <img src={caspar} alt="caspar" />,
-        name: 'Caspar von Bergliez',
-        age: 16,
-        height: '175cm',
-        House: 'Bergliez', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle6',
-        image: <img src={linhardt} alt="linhardt" />,
-        name: 'Linhardt von Hevring',
-        age: 16,
-        height: '175cm',
-        House: 'Hevring', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle7',
-        image: <img src={bernadetta} alt="bernadetta" />,
-        name: 'Bernadetta von Varley',
-        age: 17,
-        height: '175cm',
-        House: 'Varley', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-      {
-        id: 'blackEagle8',
-        image: <img src={dorothea} alt="dorothea" />,
-        name: 'Dorothea Arnault',
-        age: 18,
-        height: '175cm',
-        House: 'N/A', Crest: 'unknown',
-        Likes: 'Likes',
-        Dislikes: 'dislikes'
-      },
-    ],
-
-    blueLions: [
-      {
-        id: 'blueLions1',
-        image: <img src={dimitri} alt="Dimitri" />,
-        name: 'Dimitri Alexandre Blaiddyd',
-        age: 17,
-        height: '180cm',
-        House: 'Blaiddyd', Crest: 'Minor Crest of Blaiddyd',
-        Likes: 'Combat, high-quality weapons, strength training, going for long rides, physically laborious work',
-        Dislikes: 'Delicate work, frgile objects, scorching heat, selfish people'
-      },
-      {
-        id: 'blueLions2',
-        image: <img src={dedue} alt="Dedue" />,
-        name: 'Dedue Molinaro',
-        age: 18,
-        height: '204cm',
-        House: 'Commoner', Crest: 'N/A',
-        Likes: 'Flowers, gardening, needlework, arts and crafts',
-        Dislikes: 'Anyone who attempts to harm Dimitri'
-      },
-      {
-        id: 'blueLions3',
-        image: <img src={annette} alt="Annette" />,
-        name: 'Annette Fantine Dominic',
-        age: 16,
-        height: '151cm',
-        House: 'Dominic', Crest: 'Minor Crest Dominic',
-        Likes: 'Cleaning, doing laundry, morning walks',
-        Dislikes: 'Indolences, dark places, hard-to-reach places that needs a good dusting'
-      },
-      {
-        id: 'blueLions4',
-        image: <img src={ashe} alt="Ashe" />,
-        name: 'Ashe Ubert',
-        age: 16,
-        height: '164cm',
-        House: 'Commoner', Crest: 'N/A',
-        Likes: 'Sweets, tales of chivalry, travel journals, looking after children, violets',
-        Dislikes: 'Ghosts, enclosed spaces, violence, deception'
-      },
-      {
-        id: 'blueLions5',
-        image: <img src={felix} alt="Felix" />,
-        name: 'Felix Hugo Fraldarius',
-        age: 17,
-        height: '174cm',
-        House: 'Fraldarius', Crest: 'Crest of Fraldarius',
-        Likes: 'Fighting, high-quality weapons, spicy foods, hunting, meat',
-        Dislikes: 'Levity, sweets, chivalry, his father'
-      },
-      {
-        id: 'blueLions6',
-        image: <img src={mercedes} alt="Mercedes" />,
-        name: 'Mercedes von Martritz',
-        age: 22,
-        height: '169cm',
-        House: 'Commoner', Crest: 'Lamine',
-        Likes: 'Sweets, needlework, ghost stories, adorable things, painting, reading, fragrant flowers',
-        Dislikes: 'Spicy foods, exercise '
-      },
-      {
-        id: 'blueLions7',
-        image: <img src={ingrid} alt="Ingrid" />,
-        name: 'Ingrid Brandl Galatea',
-        age: 17,
-        height: '165cm',
-        House: 'Galatea', Crest: 'Minor Crest of Daphnel',
-        Likes: 'Food samples, meaty meals, looking after horses, tales of chivalry, virtuous knights',
-        Dislikes: 'Extravagance, hunger, the people of Duscur'
-      },
-      {
-        id: 'blueLions8',
-        image: <img src={sylvain} alt="Sylvain" />,
-        name: 'Sylvain Jose Gautier',
-        age: 19,
-        height: '186cm',
-        House: 'Gautier', Crest: 'Minor Crest of Gautier',
-        Likes: 'Women, lively places, board games',
-        Dislikes: 'Unclean spaces, jealousy, hot days'
-      }
-    ],
-
-    goldenDeer: [
-      {
-        id: 'goldenDeer1',
-        image: <img src={claude} alt="claude" />,
-        name: 'Claude von Riegan',
-        age: 17,
-        height: '175cm',
-        House: 'Riegan', Crest: 'Minor Crest Riegan',
-        Likes: 'feasts, long rids, archery, topics of curiosity',
-        Dislikes: `blind reliance on gods, leaving things to chance, 
-          being bound to common sense`},
-      {
-        id: 'goldenDeer2',
-        image: <img src={hilda} alt="Hilda" />,
-        name: 'Hilda Valentine Goneril',
-        age: 18,
-        height: '154cm',
-        House: 'Goneril', Crest: `Minor Crest Goneril`,
-        Likes: `fashion, chatting, persuasion, singing, dancing, colorful flowers`,
-        Dislikes: `Effort, exhaustion, responsibility, extreme heat or cold`
-      },
-      {
-        id: 'goldenDeer3',
-        image: <img src={leonie} alt="Leonie" />,
-        name: `Leonie Pinelli`,
-        age: 20,
-        height: '168cm',
-        House: `Commoner`, Crest: `N/A`,
-        Likes: `Captain Jeralt, military arts, competition, hunting, fishing, gardening, collecting and reusing discarded objects`,
-        Dislikes: `Defeat, decadence, debt, poisonous creatures`
-      },
-      {
-        id: 'goldenDeer4',
-        image: <img src={lorenz} alt="Lorenz" />,
-        name: 'Lorenz Hellman Gloucester',
-        age: 19,
-        height: '188cm',
-        House: `Gloucester`, Crest: `Minor Crest Gloucester`,
-        Likes: `tea, red roses, art, worthy women, nobility`,
-        Dislikes: `coffee, injustie, filth, foul odors, vulgarity`
-      },
-      {
-        id: 'goldenDeer5',
-        image: <img src={lysithea} alt="Lysithea" />,
-        name: 'Lysithea von Ordelia',
-        age: 15,
-        height: '148cm',
-        House: 'Ordelia', Crest: 'Crest Gloucester, Minor Crest Charon',
-        Likes: `sweets, cute things, lilies`,
-        Dislikes: `being treated like a child, anything physically laborious, ghosts, bitter foods`
-      },
-      {
-        id: 'goldenDeer6',
-        image: <img src={raphael} alt="Raphael" />,
-        name: 'Raphael Kirsten',
-        age: 18,
-        height: '190cm',
-        House: `Commoner`, Crest: `N/A`,
-        Likes: `pure protein, muscles, training, his baby sister`,
-        Dislikes: `book learning, unfinished meals`
-      },
-      {
-        id: 'goldenDeer7',
-        image: <img src={marianne} alt="Marianne" />,
-        name: 'Marianne von Edmund',
-        age: 18,
-        height: '163cm',
-        House: `Edmund`, Crest: `Mystery Crest`,
-        Likes: `the goddess, birds and other animals, reading, delicate flowers`,
-        Dislikes: `herself, crests, tidying up`
-      },
-      {
-        id: 'goldenDeer8',
-        image: <img src={ignatz} alt="Ignatz" />,
-        name: 'Ignatz Victor',
-        age: 17,
-        height: '164cm',
-        House: 'Commoner', Crest: 'N/A',
-        Likes: `art, the goddess, the four saints, striking landscapes, faraway lands, peace and quiet, beautiful flowers`,
-        Dislikes: `people who don't appreciate art, stressful situations, lightning`
-      },
-    ],
-    showGrid: false
+  /**
+   * Constructor - First lifecycle method called
+   * Use for: initializing state, binding event handlers
+   * Avoid: side effects, subscriptions (use componentDidMount instead)
+   */
+  constructor(props) {
+    super(props);
+    
+    // 'selectedHouse' tracks which house banner was clicked
+    // null = no house selected, 'blackEagles' | 'blueLions' | 'goldenDeer' | 'churchOfSeiros'
+    this.state = {
+      selectedHouse: null,
+      // Character data loaded from clean data files
+      blackEagles: blackEaglesData,
+      blueLions: blueLionsData,
+      goldenDeer: goldenDeerData,
+      churchOfSeiros: churchOfSeirosData
+    };
   }
 
-  houseHandler = () => {
-    console.log('was clicked!')
+  /**
+   * componentDidMount - Called immediately after component is mounted
+   * Use for: API calls, DOM manipulations, setting up subscriptions
+   * This is where you'd fetch character data from an API if needed
+   */
+  componentDidMount() {
+    console.log('App component has mounted! Ready to display Fire Emblem houses.');
+    // Example: You could fetch character data here
+    // this.fetchCharacterData();
   }
 
+  /**
+   * componentDidUpdate - Called after every re-render (not on initial mount)
+   * Use for: responding to state/props changes, DOM updates based on changes
+   * Always compare previous and current values to avoid infinite loops
+   */
+  componentDidUpdate(prevProps, prevState) {
+    // Log when user switches houses
+    if (prevState.selectedHouse !== this.state.selectedHouse) {
+      console.log(`House changed from ${prevState.selectedHouse} to ${this.state.selectedHouse}`);
+    }
+  }
+
+  /**
+   * componentWillUnmount - Called right before component is unmounted
+   * Use for: cleanup - cancel network requests, remove event listeners, clear timers
+   */
+  componentWillUnmount() {
+    console.log('App component is unmounting. Cleaning up...');
+    // Example cleanup:
+    // clearInterval(this.timer);
+    // this.subscription.unsubscribe();
+  }
+
+  /**
+   * Toggle handler for Black Eagles (Red Banner)
+   * Clicking toggles between showing Black Eagles roster or hiding it
+   */
   toggleBlackEagles = () => {
-    console.log(`Black eagles clicked`);
-    const revealEagles = this.state.showGrid;
-    this.setState({ showGrid: !revealEagles })
+    console.log('Black Eagles clicked');
+    this.setState((prevState) => ({
+      selectedHouse: prevState.selectedHouse === 'blackEagles' ? null : 'blackEagles'
+    }));
   }
 
-  toggleGoldenDeer = () => {
-    console.log('Golden Deer clicked!');
-    const revealDeer = this.state.showGrid;
-    this.setState({ showGrid: !revealDeer })
-  }
-
+  /**
+   * Toggle handler for Blue Lions (Blue Banner)
+   * Clicking toggles between showing Blue Lions roster or hiding it
+   */
   toggleBlueLions = () => {
-    console.log(`Blue Lions has been clicked!`);
+    console.log('Blue Lions clicked');
+    this.setState((prevState) => ({
+      selectedHouse: prevState.selectedHouse === 'blueLions' ? null : 'blueLions'
+    }));
   }
 
+  /**
+   * Toggle handler for Golden Deer (Yellow Banner)
+   * Clicking toggles between showing Golden Deer roster or hiding it
+   */
+  toggleGoldenDeer = () => {
+    console.log('Golden Deer clicked');
+    this.setState((prevState) => ({
+      selectedHouse: prevState.selectedHouse === 'goldenDeer' ? null : 'goldenDeer'
+    }));
+  }
+
+  /**
+   * Toggle handler for Church of Seiros (White Banner)
+   * Currently empty - roster to be added later
+   */
   toggleChurch = () => {
-    console.log(`Church of Seiros has been clicked`);
+    console.log('Church of Seiros clicked - roster not yet available');
+    this.setState((prevState) => ({
+      selectedHouse: prevState.selectedHouse === 'churchOfSeiros' ? null : 'churchOfSeiros'
+    }));
   }
 
-  render() {
+  /**
+   * Helper method to get the current roster based on selected house
+   * Returns the appropriate character array or empty array
+   */
+  getCurrentRoster = () => {
+    const { selectedHouse } = this.state;
+    
+    switch (selectedHouse) {
+      case 'blackEagles':
+        return this.state.blackEagles;
+      case 'blueLions':
+        return this.state.blueLions;
+      case 'goldenDeer':
+        return this.state.goldenDeer;
+      case 'churchOfSeiros':
+        return this.state.churchOfSeiros;
+      default:
+        return [];
+    }
+  }
 
+  /**
+   * Helper method to get the image component for a character
+   * Maps the imageKey from data to the actual imported image
+   */
+  getCharacterImage = (imageKey, name) => {
+    const imageSrc = images[imageKey];
+    return <img src={imageSrc} alt={name} />;
+  }
+
+  /**
+   * render - Required lifecycle method
+   * Called on initial mount and every state/props update
+   * Must return JSX (or null)
+   * Should be a pure function - don't modify state here
+   */
+  render() {
+    const { selectedHouse } = this.state;
+    const currentRoster = this.getCurrentRoster();
+
+    // Only show roster if a house is selected and has characters
     let showRoster = null;
 
-    if (this.state.showGrid) {
+    if (selectedHouse && currentRoster.length > 0) {
       showRoster = (
         <div id={classes.characterArrangement}>
-          {this.state.blueLions.map((person) => {
-            return <BioCard
-              image={person.image}
-              name={person.name}
-              age={person.age}
-              height={person.height}
-              house={person.House}
-              crest={person.Crest}
-              likes={person.Likes}
-              dislikes={person.Dislikes}
-            />
+          {currentRoster.map((person) => {
+            return (
+              <BioCard
+                key={person.id}
+                image={this.getCharacterImage(person.imageKey, person.name)}
+                name={person.name}
+                age={person.age}
+                height={person.height}
+                house={person.house}
+                crest={person.crest}
+                likes={person.likes}
+                dislikes={person.dislikes}
+              />
+            );
           })}
+        </div>
+      );
+    } else if (selectedHouse === 'churchOfSeiros') {
+      // Show placeholder message for Church of Seiros
+      showRoster = (
+        <div className="empty-house-message">
+          <p>Church of Seiros roster coming soon...</p>
         </div>
       );
     }
@@ -320,6 +221,7 @@ class App extends Component {
           blueLions={this.toggleBlueLions}
           blackEagles={this.toggleBlackEagles}
           church={this.toggleChurch}
+          selectedHouse={selectedHouse}
         />
         {showRoster}
       </div>

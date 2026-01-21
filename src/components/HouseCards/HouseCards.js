@@ -1,26 +1,69 @@
 import React from 'react';
-import classes from './houseCards.css';
-import Black_Eagles_Banner from './Black_Eagles_Banner.png';
-import Blue_Lions_Banner from './Blue_Lions_Banner.png';
-import Golden_Deer_Banner from './Golden_Deer_Banner.png';
-import Church_Banner from './Church_of_Seiros_Banner.png';
+import classes from './houseCards.module.css';
+import {
+  blackEaglesBanner,
+  blueLionsBanner,
+  goldenDeerBanner
+} from '../../assets/images';
+// Church banner still in this folder
+import churchBanner from './Church_of_Seiros_Banner.png';
 
- 
+/**
+ * HouseCards - Functional component displaying the four house banners
+ * Each banner is clickable and toggles the display of that house's roster
+ * 
+ * Props:
+ *   - blackEagles: click handler for Black Eagles (red banner)
+ *   - blueLions: click handler for Blue Lions (blue banner)
+ *   - goldenDeer: click handler for Golden Deer (yellow banner)
+ *   - church: click handler for Church of Seiros (white banner)
+ *   - selectedHouse: currently selected house for active state styling
+ */
 const HouseCards = (props) => {
+    const { selectedHouse } = props;
+    
     return (
         <div className={classes.house_flex}>
-            <img
+            <div 
+                className={`${classes.banner_container} ${selectedHouse === 'blackEagles' ? classes.active : ''}`}
                 onClick={props.blackEagles}
-                src={Black_Eagles_Banner} alt="Black Eagles" width="14%" />
-            <img
+            >
+                <img
+                    src={blackEaglesBanner} 
+                    alt="Black Eagles - Edelgard's House" 
+                    className={classes.banner_img}
+                />
+            </div>
+            <div 
+                className={`${classes.banner_container} ${selectedHouse === 'blueLions' ? classes.active : ''}`}
                 onClick={props.blueLions}
-                src={Blue_Lions_Banner} alt="Blue Lions" />
-            <img
+            >
+                <img
+                    src={blueLionsBanner} 
+                    alt="Blue Lions - Dimitri's House"
+                    className={classes.banner_img}
+                />
+            </div>
+            <div 
+                className={`${classes.banner_container} ${selectedHouse === 'goldenDeer' ? classes.active : ''}`}
                 onClick={props.goldenDeer}
-                src={Golden_Deer_Banner} alt="Golden Deer" />
-            <img
+            >
+                <img
+                    src={goldenDeerBanner} 
+                    alt="Golden Deer - Claude's House"
+                    className={classes.banner_img}
+                />
+            </div>
+            <div 
+                className={`${classes.banner_container} ${selectedHouse === 'churchOfSeiros' ? classes.active : ''}`}
                 onClick={props.church}
-                src={Church_Banner} alt="Church" />
+            >
+                <img
+                    src={churchBanner} 
+                    alt="Church of Seiros"
+                    className={classes.banner_img}
+                />
+            </div>
         </div>
     );
 };
